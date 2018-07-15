@@ -9,7 +9,7 @@
   <div class="screen">
     <div class="menu">
   <div class="buttons">
-    <image src="https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg"/>
+   <input type="file"  class="image-background" src="https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg"/>
      <image src="https://www.flaticon.com/premium-icon/icons/svg/965/965442.svg"/>
    <image src="https://www.flaticon.com/premium-icon/icons/svg/143/143671.svg"/>
 <image src="https://image.flaticon.com/icons/svg/802/802079.svg"/>
@@ -17,10 +17,44 @@
   </div>
   </div>
   <div class="navigation">
-  
+  <div class="navigation-buttons">
+ <image  src="https://image.flaticon.com/icons/svg/122/122637.svg"/>
+    <image src="https://image.flaticon.com/icons/svg/463/463036.svg"/>
+    <image src="https://image.flaticon.com/icons/svg/463/463036.svg"/>
+    <image src="https://image.flaticon.com/icons/svg/463/463036.svg"/>
+    <image src="https://image.flaticon.com/icons/svg/122/122636.svg"/>
+     </div>
+
+    </div>
   </div>
 
-  <script src="index.js"></script>
+  <script src="index.js">
+  </script>
+  <script>
+function renderImage(file) {
+
+  // generate a new FileReader object
+  var reader = new FileReader();
+
+  // inject an image with the src url
+  reader.onload = function(event) {
+    the_url = event.target.result
+    $('.screen').html("<img src='" + the_url + "' />")
+  }
+
+  // when the file is read it triggers the onload event above.
+  reader.readAsDataURL(file);
+}
+
+// handle input changes
+$(".screen").change(function() {
+    console.log(this.files)
+
+    // grab the first image in the FileList object and pass it to the function
+    renderImage(this.files[0])
+});
+  </script>
 </div>
 </body>
 </html>
+

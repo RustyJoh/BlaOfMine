@@ -12,7 +12,7 @@ background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008b
    border-width: 4px;
     border-style: solid;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-end;
     border-color: #3c767e;
     background-color: #cacaca;
@@ -20,14 +20,12 @@ background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008b
     border-radius: 15px;
 }
 .menu{
-      display: flex;
+    display: flex;
     flex-direction: row;
-        background-image: linear-gradient(to right, #242527, #333333, #333333, #333333, #242527);
-        width: 1065px;
-    height: 150px;
-    margin-top: 10px;
-    margin-left: 20%;
-  border-radius:10px;
+    background-image: linear-gradient(to right, #242527, #333333, #333333, #333333, #242527);
+    margin-top: 620px;
+    border-radius: 10px;
+    flex-grow: 1;
   
 }
 .buttons{
@@ -37,16 +35,42 @@ background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008b
     margin-top: 20px;
 }
 .buttons > img{
-  width:100px;
-  height:100px;
-  cursor: pointer;
+    width: 50px;
+    height: 50px;
+  cursor:pointer;
 }
 
 .navigation{
-    height: 250px;
+          display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+      margin-top: 5px;
+    height: 240px;
     background-color: #333333;
     border-radius: 10px;
     border-width: 3px;
     border-style: solid;
     border-color: #b1b1b1;
+}
+.navigation-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    width: 150px;
+    border-radius: 105px;
+    height: 190px;
+    margin-top: 45px;
+}
+.navigation-buttons > img{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+  cursor:pointer;
+}
+.buttons > .image-background{
+   Background-image:url("../https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg");
+  
 }
