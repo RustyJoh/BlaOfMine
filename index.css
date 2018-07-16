@@ -1,13 +1,13 @@
-html{
-  
-  
-      height: 100%;
+html {
+  height: 100%;
 }
+
 body {
-background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008bb8, #12a9eb);
-  background-repeat:no-repeat;
-         height: 100%;
+  background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008bb8, #12a9eb);
+  background-repeat: no-repeat;
+  height: 100%;
 }
+
 .screen{
    border-width: 4px;
     border-style: solid;
@@ -19,58 +19,126 @@ background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008b
     height: 700px;
     border-radius: 15px;
 }
-.menu{
-    display: flex;
-    flex-direction: row;
-    background-image: linear-gradient(to right, #242527, #333333, #333333, #333333, #242527);
-    margin-top: 620px;
-    border-radius: 10px;
-    flex-grow: 1;
-  
-}
-.buttons{
-      display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-.buttons > img{
-    width: 50px;
-    height: 50px;
-  cursor:pointer;
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  background-image: linear-gradient(to right, #242527, #333333, #333333, #333333, #242527);
+  margin-top: 620px;
+  border-radius: 10px;
+  flex-grow: 1;
 }
 
-.navigation{
-          display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-grow: 1;
-      margin-top: 5px;
-    height: 240px;
-    background-color: #333333;
-    border-radius: 10px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: #b1b1b1;
+.buttons {
+  display: flex;
+  flex-grow: 1;
+  flex-direction:row;
+  justify-content: space-around;
+  margin-top: 20px;
 }
-.navigation-buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-grow: 1;
-    width: 150px;
-    border-radius: 105px;
-    height: 190px;
-    margin-top: 45px;
+
+.buttons>img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
-.navigation-buttons > img{
-    display: flex;
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-top: 5px;
+  height: 240px;
+  background-color: #333333;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #b1b1b1;
+}
+
+.navigation-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  width: 150px;
+  border-radius: 105px;
+  height: 190px;
+  margin-top: 45px;
+}
+
+.navigation-buttons>img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  cursor: pointer;
+}
+.image-background{
+      display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-grow: 1;
+}
+.image-background > .button-background input {
+      display: inline-block;
+    width: 100%;
+    padding: 50px 0 0 0;
+    height: 0px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg) center center no-repeat;
+    border-radius: 20px;
+    background-size: 50px 50px;
   cursor:pointer;
+  outline: none;
 }
-.buttons > .image-background{
-   Background-image:url("../https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg");
-  
+.image-background > .button-theme input {
+      display: inline-block;
+    width: 100%;
+    padding: 50px 0 0 0;
+    height: 0px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965442.svg) center center no-repeat;
+    border-radius: 20px;
+    background-size: 50px 50px;
+  cursor:pointer;
+  outline: none;
 }
+.image-background > .button-logo input {
+      display: inline-block;
+    width: 100%;
+    padding: 50px 0 0 0;
+    height: 0px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(https://www.flaticon.com/premium-icon/icons/svg/143/143671.svg) center center no-repeat;
+    border-radius: 20px;
+    background-size: 50px 50px;
+  cursor:pointer;
+  outline: none;
+}
+    
+    .image-background > .button-text input {
+      display: inline-block;
+    width: 100%;
+    padding: 50px 0 0 0;
+    height: 0px;
+    overflow: hidden;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: url(https://image.flaticon.com/icons/svg/802/802079.svg) center center no-repeat;
+    border-radius: 20px;
+    background-size: 50px 50px;
+  cursor:pointer;
+  outline: none;
+}
+    

@@ -1,60 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-      <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" type="text/css" href="index.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="index.css" />
 </head>
+
 <body>
   <div class="screen">
     <div class="menu">
-  <div class="buttons">
-   <input type="file"  class="image-background" src="https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg"/>
-     <image src="https://www.flaticon.com/premium-icon/icons/svg/965/965442.svg"/>
-   <image src="https://www.flaticon.com/premium-icon/icons/svg/143/143671.svg"/>
-<image src="https://image.flaticon.com/icons/svg/802/802079.svg"/>
-  </div>
-  </div>
-  </div>
-  <div class="navigation">
-  <div class="navigation-buttons">
- <image  src="https://image.flaticon.com/icons/svg/122/122637.svg"/>
-    <image src="https://image.flaticon.com/icons/svg/463/463036.svg"/>
-    <image src="https://image.flaticon.com/icons/svg/463/463036.svg"/>
-    <image src="https://image.flaticon.com/icons/svg/463/463036.svg"/>
-    <image src="https://image.flaticon.com/icons/svg/122/122636.svg"/>
-     </div>
-
+      <div class="buttons">
+        <div class="image-background">
+         <div class="button-background"><INPUT type="file" name="" value=""></div>
+          <div class="button-theme"><INPUT type="file" name="" value=""></div>
+             <div class="button-logo"><INPUT type="file" name="" value=""></div>
+                          <div class="button-text"><INPUT type="file" name="" value=""></div>
+           </div>
+      </div>
     </div>
   </div>
+  <div class="navigation">
+    <div class="navigation-buttons">
+      <image src="https://image.flaticon.com/icons/svg/122/122637.svg" />
+      <image src="https://image.flaticon.com/icons/svg/463/463036.svg" />
+      <image src="https://image.flaticon.com/icons/svg/463/463036.svg" />
+      <image src="https://image.flaticon.com/icons/svg/463/463036.svg" />
+      <image src="https://image.flaticon.com/icons/svg/122/122636.svg" />
+    </div>
 
-  <script src="index.js">
-  </script>
-  <script>
-function renderImage(file) {
+  </div>
+  </div>
 
-  // generate a new FileReader object
-  var reader = new FileReader();
-
-  // inject an image with the src url
-  reader.onload = function(event) {
-    the_url = event.target.result
-    $('.screen').html("<img src='" + the_url + "' />")
-  }
-
-  // when the file is read it triggers the onload event above.
-  reader.readAsDataURL(file);
-}
-
-// handle input changes
-$(".screen").change(function() {
-    console.log(this.files)
-
-    // grab the first image in the FileList object and pass it to the function
-    renderImage(this.files[0])
-});
-  </script>
-</div>
+  <script src="index.js"> </script>
+  </div>
 </body>
-</html>
 
+</html>
