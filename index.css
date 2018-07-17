@@ -188,4 +188,17 @@ html,body {
       opacity: 0.5;
 
 }
+.post-logo > img {
+     position: absolute;
+    top: 50px;
+    left: 47%;
+    z-index: 2;
 
+}
+.post-text {
+     position: absolute;
+    top: 50px;
+    left: 47%;
+    z-index: 2;
+
+}
