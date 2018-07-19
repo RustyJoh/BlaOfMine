@@ -17,8 +17,9 @@ body {
     background-repeat: no-repeat;
     height: 1355px;
     width: 755px;
+    position: absolute;
   }
-  .navigation {
+ .navigation {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,7 +32,24 @@ body {
     border-style: solid;
     border-color: #b1b1b1;
   }
-  .screen {
+  .navigation >.navigation-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  width: 150px;
+  border-radius: 105px;
+  height: 190px;
+  margin-top: 45px;
+}
+ .navigation>.navigation-buttons>img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  cursor: pointer;
+}
+  body>.screen {
     border-width: 4px;
     border-style: solid;
     display: flex;
@@ -39,32 +57,45 @@ body {
     border-color: #3c767e;
     background-color: #cacaca;
     border-radius: 15px;
+    height: 1078px;
     align-items: flex-end;
   }
-  .post-background>img {
+ .post > .post-background>img {
     height: 644px;
     margin-top: -38px;
-    width: 745px;
+    width: 100%;
     left: 13px;
   }
-  .post-theme>img {
+  .post > .post-theme>img {
     height: 644px;
     margin-top: -38px;
     width: 745px;
     left: 13px;
     z-index: 1;
   }
-  .post-logo>img {
+  .post > .post-logo>img {
     position: absolute;
     top: 19px;
     left: 92%;
     z-index: 2;
   }
-  .post-text {
+  .post > .post-text {
     position: absolute;
     top: 50px;
     left: 47%;
     z-index: 2;
+  }
+  .post .text_edit {
+    position: fixed;
+    width: 636px;
+    height: 240px;
+    right: 60px;
+    top: 158px;
+    resize: none;
+    background: transparent;
+    font-size: 40px;
+    border: none;
+    color: white;
   }
 }
 
@@ -198,53 +229,56 @@ body {
   cursor: pointer;
   outline: none;
 }
-.post{
-  width:646px;
-    height:646px;
-  background-color:red;
+
+.post {
+  width: 646px;
+  height: 646px;
+  position: absolute;
+  left: 640px;
+  top: 12px;
 }
 
 .post-background>img {
-  position: absolute;
-  top: 12px;
-  right: 635px;
+  position: fixed;
   z-index: 1;
+   width:646px;
+  height:646px;
 }
 
 .post-theme>img {
-  position: absolute;
-  top: 12px;
-  right: 635px;
+  position: fixed;
   z-index: 1;
+  width:646px;
+  height:646px;
 }
 
 .post-logo>img {
-  position: absolute;
-  top: 50px;
-  left: 870px;
-  z-index: 2;
+      position: fixed;
+    left: 875px;
+    z-index: 2;
+    width: 175px;
+    height: 175px;
 }
 
 .post-text {
-  position: absolute;
-  top: 50px;
-  left: 47%;
+  position: fixed;
   z-index: 3;
   display: none;
   direction: rtl;
 }
 
 .text_edit {
-  position: absolute;
-  left: -260px;
-  top: 145px;
+  position: fixed;
   width: 636px;
   height: 240px;
+  right: 637px;
+  top: 190px;
   resize: none;
   background: transparent;
   font-size: 25px;
   border: none;
   color: white;
+  text-align: center;
 }
 
 #view_text {

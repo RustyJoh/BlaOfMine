@@ -5,8 +5,7 @@ function loadBackgroundImage(e) {
   if (files.length > 0) {
     let img = document.createElement("img");
     img.src = window.URL.createObjectURL(files[0]);
-    img.height = 646;
-    img.width = 646;
+
     img.onload = function() {
       window.URL.revokeObjectURL(this.src);
       document.getElementsByClassName("post-background")[0].appendChild(img);
@@ -21,8 +20,7 @@ function loadThemeImage(e) {
   if (files.length > 0) {
     let img = document.createElement("img");
     img.src = window.URL.createObjectURL(files[0]);
-    img.height = 646;
-    img.width = 646;
+   
     img.onload = function() {
       window.URL.revokeObjectURL(this.src);
       document.getElementsByClassName("post-theme")[0].appendChild(img);
@@ -37,8 +35,7 @@ function loadLogoImage(e) {
   if (files.length > 0) {
     let img = document.createElement("img");
     img.src = window.URL.createObjectURL(files[0]);
-    img.height = 175;
-    img.width = 175;
+    
     img.onload = function() {
       window.URL.revokeObjectURL(this.src);
       document.getElementsByClassName("post-logo")[0].appendChild(img);
@@ -57,3 +54,4 @@ function showTextInput(e) {
   }
   console.log("button-text");
 }
+
