@@ -2,19 +2,22 @@ html {
   height: 100%;
 }
 
-html,body {
+html,
+body {
   background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008bb8, #12a9eb);
   background-repeat: no-repeat;
   height: 100%;
   overflow: hidden;
 }
+
 @media only screen and (max-width: 600px) {
-    html,body {
-        background-color: #006d88;
+  html,
+  body {
+    background-color: #006d88;
     background-repeat: no-repeat;
     height: 1355px;
     width: 755px;
-    }
+  }
   .navigation {
     display: flex;
     flex-direction: row;
@@ -28,47 +31,63 @@ html,body {
     border-style: solid;
     border-color: #b1b1b1;
   }
-  .screen{
+  .screen {
     border-width: 4px;
     border-style: solid;
     display: flex;
     justify-content: flex-end;
     border-color: #3c767e;
     background-color: #cacaca;
-   
     border-radius: 15px;
     align-items: flex-end;
-}
-.post-background > img {
+  }
+  .post-background>img {
     height: 644px;
-    margin-top: -17px;
+    margin-top: -38px;
     width: 745px;
     left: 13px;
+  }
+  .post-theme>img {
+    height: 644px;
+    margin-top: -38px;
+    width: 745px;
+    left: 13px;
+    z-index: 1;
+  }
+  .post-logo>img {
+    position: absolute;
+    top: 19px;
+    left: 92%;
+    z-index: 2;
+  }
+  .post-text {
+    position: absolute;
+    top: 50px;
+    left: 47%;
+    z-index: 2;
+  }
 }
-}
-      
 
-
-.screen{
-    border-width: 4px;
-    border-style: solid;
-    display: flex;
-    justify-content: flex-end;
-    border-color: #3c767e;
-    background-color: #cacaca;
-    height: 700px;
-    border-radius: 15px;
-    align-items: flex-end;
+.screen {
+  border-width: 4px;
+  border-style: solid;
+  display: flex;
+  justify-content: flex-end;
+  border-color: #3c767e;
+  background-color: #cacaca;
+  height: 700px;
+  border-radius: 15px;
+  align-items: flex-end;
 }
 
 .buttons {
   display: flex;
   flex-grow: 1;
-  flex-direction:row;
+  flex-direction: row;
   background-image: linear-gradient(to right, #242527, #333333, #333333, #333333, #242527);
   justify-content: space-around;
   margin-top: 20px;
-      border-radius: 10px;
+  border-radius: 10px;
 }
 
 .buttons>img {
@@ -109,96 +128,125 @@ html,body {
   flex-grow: 1;
   cursor: pointer;
 }
-.image-background{
-      display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.image-background > .button-background input {
-      display: inline-block;
-    width: 100%;
-    padding: 50px 0 0 0;
-    height: 0px;
-    overflow: hidden;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg) center center no-repeat;
-    border-radius: 20px;
-    background-size: 50px 50px;
-  cursor:pointer;
-  outline: none;
-}
-.image-background > .button-theme input {
-      display: inline-block;
-    width: 100%;
-    padding: 50px 0 0 0;
-    height: 0px;
-    overflow: hidden;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965442.svg) center center no-repeat;
-    border-radius: 20px;
-    background-size: 50px 50px;
-  cursor:pointer;
-  outline: none;
-}
-.image-background > .button-logo input {
-      display: inline-block;
-    width: 100%;
-    padding: 50px 0 0 0;
-    height: 0px;
-    overflow: hidden;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: url(https://www.flaticon.com/premium-icon/icons/svg/143/143671.svg) center center no-repeat;
-    border-radius: 20px;
-    background-size: 50px 50px;
-  cursor:pointer;
-  outline: none;
-}
-    
-    .image-background > .button-text input {
-      display: inline-block;
-    width: 100%;
-    padding: 50px 0 0 0;
-    height: 0px;
-    overflow: hidden;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: url(https://image.flaticon.com/icons/svg/802/802079.svg) center center no-repeat;
-    border-radius: 20px;
-    background-size: 50px 50px;
-  cursor:pointer;
-  outline: none;
-}
-.post-background > img {
-    position: absolute;
-    top: 50px;
-    right: 425px;
-}
-.post-theme > img {
-    position: absolute;
-    top: 50px;
-    right: 425px;
-   z-index: 1;
-      opacity: 0.5;
 
+.image-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.post-logo > img {
-     position: absolute;
-    top: 50px;
-    left: 47%;
-    z-index: 2;
 
+.image-background>.button-background input {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
 }
+
+.image-background>.button-theme input {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965442.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.image-background>.button-logo input {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://www.flaticon.com/premium-icon/icons/svg/143/143671.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.button-text {
+  display: inline-block;
+  width: 240px;
+  padding: 50px 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://image.flaticon.com/icons/svg/802/802079.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+.post{
+  width:646px;
+    height:646px;
+  background-color:red;
+}
+
+.post-background>img {
+  position: absolute;
+  top: 12px;
+  right: 635px;
+  z-index: 1;
+}
+
+.post-theme>img {
+  position: absolute;
+  top: 12px;
+  right: 635px;
+  z-index: 1;
+}
+
+.post-logo>img {
+  position: absolute;
+  top: 50px;
+  left: 870px;
+  z-index: 2;
+}
+
 .post-text {
-     position: absolute;
-    top: 50px;
-    left: 47%;
-    z-index: 2;
+  position: absolute;
+  top: 50px;
+  left: 47%;
+  z-index: 3;
+  display: none;
+  direction: rtl;
+}
 
+.text_edit {
+  position: absolute;
+  left: -260px;
+  top: 145px;
+  width: 636px;
+  height: 240px;
+  resize: none;
+  background: transparent;
+  font-size: 25px;
+  border: none;
+  color: white;
+}
+
+#view_text {
+  width: 500px;
 }
