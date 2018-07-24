@@ -1,48 +1,23 @@
-document.getElementsByClassName("button-background")[0].addEventListener("change", loadBackgroundImage, false);
+document.getElementsByClassName("button-background")[0].addEventListener("change", function(e){ loadImage(e, 'button-background', 'post-background') }, false);
+document.getElementsByClassName("button-theme")[0].addEventListener("change",  function(e){ loadImage(e, 'button-theme', 'post-theme') }, false);
+document.getElementsByClassName("button-logo")[0].addEventListener("change",  function(e){ loadImage(e, 'button-logo', 'post-logo') }, false);
 
-function loadBackgroundImage(e) {
-  const files = document.getElementsByClassName('button-background')[0].children[0].files
+function loadImage(e, buttonSelector, targetSelector) {
+  const files = document.getElementsByClassName(buttonSelector)[0].children[0].files
   if (files.length > 0) {
     let img = document.createElement("img");
+    img.className="post";
     img.src = window.URL.createObjectURL(files[0]);
 
     img.onload = function() {
       window.URL.revokeObjectURL(this.src);
-      document.getElementsByClassName("post-background")[0].appendChild(img);
+      document.getElementsByClassName(targetSelector)[0].appendChild(img);
+      
 
     }
   }
 }
-document.getElementsByClassName("button-theme")[0].addEventListener("change", loadThemeImage, false);
 
-function loadThemeImage(e) {
-  const files = document.getElementsByClassName('button-theme')[0].children[0].files
-  if (files.length > 0) {
-    let img = document.createElement("img");
-    img.src = window.URL.createObjectURL(files[0]);
-   
-    img.onload = function() {
-      window.URL.revokeObjectURL(this.src);
-      document.getElementsByClassName("post-theme")[0].appendChild(img);
-
-    }
-  }
-}
-document.getElementsByClassName("button-logo")[0].addEventListener("change", loadLogoImage, false);
-
-function loadLogoImage(e) {
-  const files = document.getElementsByClassName('button-logo')[0].children[0].files
-  if (files.length > 0) {
-    let img = document.createElement("img");
-    img.src = window.URL.createObjectURL(files[0]);
-    
-    img.onload = function() {
-      window.URL.revokeObjectURL(this.src);
-      document.getElementsByClassName("post-logo")[0].appendChild(img);
-
-    }
-  }
-}
 document.getElementsByClassName("button-text")[0].addEventListener("click", showTextInput, false);
 
 function showTextInput(e) {
