@@ -1,0 +1,206 @@
+html {
+  height: 100%;
+}
+
+html,
+body {
+  background-image: linear-gradient(to right top, #053337, #00505d, #006d88, #008bb8, #12a9eb);
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  border: 4px solid #3c767e;
+  background-color: #cacaca;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  background-image: linear-gradient(to right, #242527, #333333, #333333, #333333, #242527);
+  justify-content: space-around;
+  margin-top: auto;
+  border-radius: 10px;
+  min-height: 55px;
+}
+#myCanvas {
+  width:100%;
+    height:100%;
+  border:1px solid black;
+}
+
+.buttons>img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.image-background {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.image-background>.button-background input {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965432.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.image-background>.button-theme input {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://www.flaticon.com/premium-icon/icons/svg/965/965442.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.image-background>.button-logo input {
+  display: inline-block;
+  width: 100%;
+  padding: 50px 0 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://www.flaticon.com/premium-icon/icons/svg/143/143671.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.button-text {
+  display: inline-block;
+  width: 240px;
+  padding: 50px 0 0;
+  height: 0px;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(https://image.flaticon.com/icons/svg/802/802079.svg) center center no-repeat;
+  border-radius: 20px;
+  background-size: 50px 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+.post-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+    width: 98vw;
+  height: 94vw;
+}
+
+.post {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+.post-background>img {
+  max-width: 640px;
+  width: 100%;
+  z-index: 1;
+}
+
+.post-theme>img {
+  max-width: 640px;
+  z-index: 1;
+}
+
+.post-logo>img {
+    width: 25%;
+    height: 25%;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.post-text {
+  position: relative;
+  z-index: 3;
+  direction: rtl;
+      display: block;
+    margin-top: 25%;
+    height: 40%;
+}
+
+.text_edit {
+    resize: none;
+    background: transparent;
+    font-size: 25px;
+    border: none;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#view_text {
+  width: 500px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  background-color: #333333;
+  border-radius: 10px;
+  border: 3px solid #b1b1b1;
+}
+
+.navigation-buttons {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.navigation-buttons>img {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 15%;
+  max-width: 150px;
+  height: 100%;
+}
