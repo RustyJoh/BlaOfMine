@@ -1,8 +1,11 @@
+let ctx
 let id = 0
-
 class Post {
   constructor(canvas) {
+    canvas.width = 512;
+    canvas.height = 512;
     this._canvas = canvas;
+    this._ctx = canvas.getContext('2d');
     this._id = id++;
     this._name = '';
     this._bgImage = null;
@@ -10,6 +13,7 @@ class Post {
     this._logo = null;
     this._text = '';
   }
+  
   set bgImage(imageFile) {
     this._loadImage(imageFile, 'post-background')
     this._bgImage = imageFile;
@@ -19,7 +23,7 @@ class Post {
     return this._bgImage
   }
   set templateImage(imageFile) {
-    this._loadImage(imageFile, 'post-theme', 0)
+    this._loadImage(imageFile, 'post-theme')
     this._templateImage = imageFile;
 
   }
@@ -33,43 +37,41 @@ class Post {
   get logo() {
     return this._logo
   }
-  set text(text) {
-    ctx.strokeText(text,50,50);
-    ctx.font = "500px Arial";
-    this._text = text;
+  set text(textInput) {
+    this._text(textInput, 'post-text')
+    this._text = textInput;
+
   }
   get text() {
     return this._text
   }
 
-  _loadImage(imageFile, targetSelectorClassName, alpha) {
-    const targetSelector = document.getElementsByClassName(targetSelectorClassName)[0]
-    var ctx = canvas.getContext("2d");
-
-//     if (targetSelector.childNodes[0]) {
-//       targetSelector.removeChild(targetSelector.childNodes[0]);
-//     }
-
+  _loadImage(imageFile, targetSelectorClassName) {
     if (imageFile) {
       let img = document.createElement("img");
       img.className = "post";
       img.src = window.URL.createObjectURL(imageFile);
-
+      let canvas = this._canvas
+      let ctx = this._ctx
       img.onload = function() {
-        window.URL.revokeObjectURL(this.src);
+        window.URL.revokeObjectURL(img.src);
 //         targetSelector.appendChild(img)
-        //      ctx.drawImage(img, 0,0,600,600, 0, 0, 600, 600);
-        let scaledImage = scaleIt(img, 0.5)
-
-        canvas.width = scaledImage.width / 2;
-        canvas.height = scaledImage.height / 2;
-        if (alpha === 0) {
-          ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-        }
-        ctx.drawImage(img, 0, 0, 200, 200)
+//         ctx.drawImage(img, 0,0,600,600, 0, 0, 600, 600);
+        let scaledImage = scaleIt(canvas,ctx,img, 0.5) 
+ 
+//         canvas.width = scaledImage.width / 2;
+//         canvas.height = scaledImage.height / 2;
 //         drawImageProp(ctx, scaledImage)
       }
     }
+  }
+  if (textInput) {
+    if (text.style.display === "block") {
+      text.style.display = "none";
+    } else {
+      text.style.display = "block";
+    }
+    console.log("button-text");
   }
 }
 
@@ -89,20 +91,18 @@ document.getElementsByClassName("button-logo")[0].addEventListener("change", fun
 document.getElementsByClassName("button-text")[0].addEventListener("click", showTextInput, false);
 
 function showTextInput(e) {
-  const text = document.getElementsByClassName("post-text")[0].value;
-  post.text = text;
-//   if (text.style.display === "block") {
-//     text.style.display = "none";
-//   } else {
-//     text.style.display = "block";
-//   }
-//   console.log("button-text");
+  const text = document.getElementsByClassName("post-text")[0];
+  if (text.style.display === "block") {
+    text.style.display = "none";
+  } else {
+    text.style.display = "block";
+  }
+  console.log("button-text");
 }
 /*upload a canvas  */
+
 window.onload = function() {
   canvas = document.getElementById('myCanvas');
-  ctx = canvas.getContext('2d');
-
 }
 
 
@@ -113,7 +113,7 @@ window.onload = function() {
  *
  * If image and context are only arguments rectangle will equal canvas
  */
-function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
+function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY){
 
   if (arguments.length === 2) {
     x = y = 0;
@@ -158,16 +158,13 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
   if (ch > ih) ch = ih;
 
   // fill image in dest. rectangle
-  ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+  ctx.drawImage(img, cx + tempCounter, cy + (tempCounter += 50) , cw, ch, x, y, w, h);
 }
 
-function scaleIt(source, scaleFactor) {
-  let c = document.createElement('canvas');
-  let ctx1 = c.getContext('2d');
-  let w = source.width * scaleFactor;
-  let h = source.height * scaleFactor;
-  c.width = w;
-  c.height = h;
-  ctx1.drawImage(source, 0, 0, w, h);
-  return (c);
+function scaleIt(canvas,ctx,img, scaleFactor) {
+  let w = img.width * scaleFactor;
+  let h = img.height * scaleFactor;
+  ctx.drawImage(img, 0, 0, img.width,    img.height,     // source rectangle
+                   0, 0, canvas.width, canvas.height); // destination rectangle
+  return (canvas);
 }
