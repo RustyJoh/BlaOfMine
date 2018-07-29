@@ -1,4 +1,3 @@
-let ctx
 let id = 0
 class Post {
   constructor(canvas) {
@@ -13,7 +12,7 @@ class Post {
     this._logo = null;
     this._text = '';
   }
-  
+
   set bgImage(imageFile) {
     this._loadImage(imageFile, 'post-background')
     this._bgImage = imageFile;
@@ -31,8 +30,12 @@ class Post {
     return this._templateImage
   }
   set logo(imageFile) {
-    this._loadImage(imageFile, 'post-logo')
+    this._loadImage(imageFile, 'post-logo', 0.2, {
+      top: 10,
+      left: 200
+    })
     this._logo = imageFile;
+
   }
   get logo() {
     return this._logo
@@ -45,8 +48,25 @@ class Post {
   get text() {
     return this._text
   }
+  
+  savePost(e) {
+    let input =  document.getElementsByClassName("textbox");
+    let textValue = document.getElementsByClassName("textbox")[0].value;
+    drawText(this._ctx,textValue);
+    document.getElementsByClassName("post")[0].removeChild(input[0]);
+    console.log(input);
+  }
 
-  _loadImage(imageFile, targetSelectorClassName) {
+  _loadImage(imageFile, targetSelectorClassName, scaleFactor, position) {
+    if (!scaleFactor) {
+      scaleFactor = 1
+    }
+    if (!position) {
+      position = {
+        left: 0,
+        top: 0
+      }
+    }
     if (imageFile) {
       let img = document.createElement("img");
       img.className = "post";
@@ -55,23 +75,9 @@ class Post {
       let ctx = this._ctx
       img.onload = function() {
         window.URL.revokeObjectURL(img.src);
-//         targetSelector.appendChild(img)
-//         ctx.drawImage(img, 0,0,600,600, 0, 0, 600, 600);
-        let scaledImage = scaleIt(canvas,ctx,img, 0.5) 
- 
-//         canvas.width = scaledImage.width / 2;
-//         canvas.height = scaledImage.height / 2;
-//         drawImageProp(ctx, scaledImage)
+        scaleAndDraw(canvas, ctx, img, scaleFactor, position.left, position.top)
       }
     }
-  }
-  if (textInput) {
-    if (text.style.display === "block") {
-      text.style.display = "none";
-    } else {
-      text.style.display = "block";
-    }
-    console.log("button-text");
   }
 }
 
@@ -86,34 +92,18 @@ document.getElementsByClassName("button-theme")[0].addEventListener("change", fu
 document.getElementsByClassName("button-logo")[0].addEventListener("change", function(e) {
   post.logo = e.target.files[0]
 }, false);
-// let ctx
-// let canvas
-document.getElementsByClassName("button-text")[0].addEventListener("click", showTextInput, false);
-
-function showTextInput(e) {
-  const text = document.getElementsByClassName("post-text")[0];
-  if (text.style.display === "block") {
-    text.style.display = "none";
-  } else {
-    text.style.display = "block";
-  }
-  console.log("button-text");
-}
-/*upload a canvas  */
-
+document.getElementsByClassName("button-save")[0].addEventListener("click", function (e) {
+  post.savePost(e)
+}, false);
+// document.getElementsByClassName("button-text")[0].addEventListener("change", function(e) {
+//   post.text = e.target.input[0]
+// }, false);
 window.onload = function() {
   canvas = document.getElementById('myCanvas');
+  document.getElementsByClassName("textbox");
 }
 
-
-/**
- * By Ken Fyrstenberg Nilsen
- *
- * drawImageProp(context, image [, x, y, width, height [,offsetX, offsetY]])
- *
- * If image and context are only arguments rectangle will equal canvas
- */
-function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY){
+function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
 
   if (arguments.length === 2) {
     x = y = 0;
@@ -158,13 +148,27 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY){
   if (ch > ih) ch = ih;
 
   // fill image in dest. rectangle
-  ctx.drawImage(img, cx + tempCounter, cy + (tempCounter += 50) , cw, ch, x, y, w, h);
+  ctx.drawImage(img, cx + tempCounter, cy + (tempCounter += 50), cw, ch, x, y, w, h);
 }
 
-function scaleIt(canvas,ctx,img, scaleFactor) {
-  let w = img.width * scaleFactor;
-  let h = img.height * scaleFactor;
-  ctx.drawImage(img, 0, 0, img.width,    img.height,     // source rectangle
-                   0, 0, canvas.width, canvas.height); // destination rectangle
+function scaleAndDraw(canvas, ctx, img, scaleFactor, x, y) {
+  let w = canvas.width * scaleFactor;
+  let h = canvas.height * scaleFactor;
+  ctx.drawImage(img, 0, 0, img.width, img.height, // source rectangle
+    x, y, w, h); // destination rectangle
   return (canvas);
 }
+ let font="30px Arial";
+function drawText(ctx,textValue) {
+  ctx.textAlign = 'rtl';
+  ctx.fillText(textValue,240,240);
+  ctx.font = font;
+}
+
+// addEventListener('save-button', () => {
+//   convertInputToCanvasText()
+//   savePost()
+//   movePostToPostsCollection()
+//   cleanMainPost()
+//   createNewMainPost()
+// })
