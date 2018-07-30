@@ -48,11 +48,15 @@ class Post {
   get text() {
     return this._text
   }
-  
   savePost(e) {
-    let input =  document.getElementsByClassName("textbox");
+    let link = document.getElementsByClassName('downloadButton')[0];
+      link.href = canvas.toDataURL();
+      link.download = "Post-1";
+  }
+  convertInputToCanvasText(e) {
+    let input = document.getElementsByClassName("textbox");
     let textValue = document.getElementsByClassName("textbox")[0].value;
-    drawText(this._ctx,textValue);
+    drawText(this._ctx, textValue);
     document.getElementsByClassName("post")[0].removeChild(input[0]);
     console.log(input);
   }
@@ -92,7 +96,8 @@ document.getElementsByClassName("button-theme")[0].addEventListener("change", fu
 document.getElementsByClassName("button-logo")[0].addEventListener("change", function(e) {
   post.logo = e.target.files[0]
 }, false);
-document.getElementsByClassName("button-save")[0].addEventListener("click", function (e) {
+document.getElementsByClassName("downloadButton")[0].addEventListener("click", function(e) {
+  post.convertInputToCanvasText(e)
   post.savePost(e)
 }, false);
 // document.getElementsByClassName("button-text")[0].addEventListener("change", function(e) {
@@ -158,11 +163,13 @@ function scaleAndDraw(canvas, ctx, img, scaleFactor, x, y) {
     x, y, w, h); // destination rectangle
   return (canvas);
 }
- let font="30px Arial";
-function drawText(ctx,textValue) {
+let font = "25px Arial";
+
+function drawText(ctx, textValue) {
   ctx.textAlign = 'rtl';
-  ctx.fillText(textValue,240,240);
+  ctx.fillStyle = 'white';
   ctx.font = font;
+  ctx.fillText(textValue, 190, 240);
 }
 
 // addEventListener('save-button', () => {
