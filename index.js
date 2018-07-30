@@ -11,7 +11,6 @@ document.getElementsByClassName("button-logo")[0].addEventListener("change", fun
 }, false);
 document.getElementsByClassName("downloadButton")[0].addEventListener("click", function(e) {
   post.convertInputToCanvasText(e)
-  post.savePost(e)
 }, false);
 
 window.onload = function() {

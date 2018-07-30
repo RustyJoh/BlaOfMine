@@ -58,7 +58,7 @@ class Post {
     let textValue = document.getElementsByClassName("textbox")[0].value;
     drawText(this._ctx, textValue);
     document.getElementsByClassName("post")[0].removeChild(input[0]);
-    console.log(input);
+    post.savePost(e);
   }
 
   _loadImage(imageFile, targetSelectorClassName, scaleFactor, position) {

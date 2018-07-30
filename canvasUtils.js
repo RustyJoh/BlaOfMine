@@ -16,7 +16,7 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
   if (offsetX > 1) offsetX = 1;
   if (offsetY > 1) offsetY = 1;
 
-  var iw = img.width,
+  let iw = img.width,
     ih = img.height,
     r = Math.min(w / iw, h / ih),
     nw = iw * r, // new prop. width
@@ -43,7 +43,7 @@ function drawImageProp(ctx, img, x, y, w, h, offsetX, offsetY) {
   if (ch > ih) ch = ih;
 
   // fill image in dest. rectangle
-  ctx.drawImage(img, cx + tempCounter, cy + (tempCounter += 50), cw, ch, x, y, w, h);
+  ctx.drawImage(img, cx , cy , cw, ch, x, y, w, h);
 }
 
 function scaleAndDraw(canvas, ctx, img, scaleFactor, x, y) {
@@ -60,4 +60,7 @@ function drawText(ctx, textValue) {
   ctx.fillStyle = 'white';
   ctx.font = font;
   ctx.fillText(textValue, 230, 238);
+}
+function insertCanvasToFrame(e){
+  document.getElementById("frame-1").appendChild("myCanvas");
 }
