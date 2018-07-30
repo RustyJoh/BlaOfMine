@@ -139,41 +139,17 @@ body {
   max-height: 600px;
 }
 
-.post-background>img {
-  max-width: 640px;
-  width: 100%;
-  z-index: 1;
-}
-
-.post-theme>img {
-  max-width: 640px;
-  z-index: 1;
-}
-
-.post-logo>img {
-  width: 25%;
-  height: 25%;
-  z-index: 1;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-
 .textbox {
-    position: absolute;
-    margin-top: 25%;
-    resize: none;
-    background: transparent;
-    font-size: 25px;
-    border: none;
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 40%;
-}
-
-#view_text {
-  width: 500px;
+  position: absolute;
+  margin-top: 25%;
+  resize: none;
+  background: transparent;
+  font-size: 25px;
+  border: none;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 40%;
 }
 
 .navigation {

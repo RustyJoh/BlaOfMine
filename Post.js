@@ -1,4 +1,3 @@
-let ctx
 let id = 0
 class Post {
   constructor(canvas) {
@@ -13,7 +12,7 @@ class Post {
     this._logo = null;
     this._text = '';
   }
-  
+
   set bgImage(imageFile) {
     this._loadImage(imageFile, 'post-background')
     this._bgImage = imageFile;
@@ -31,8 +30,12 @@ class Post {
     return this._templateImage
   }
   set logo(imageFile) {
-    this._loadImage(imageFile, 'post-logo')
+    this._loadImage(imageFile, 'post-logo', 0.2, {
+      top: 10,
+      left: 200
+    })
     this._logo = imageFile;
+
   }
   get logo() {
     return this._logo
@@ -45,8 +48,29 @@ class Post {
   get text() {
     return this._text
   }
+  savePost(e) {
+    let link = document.getElementsByClassName('downloadButton')[0];
+    link.href = canvas.toDataURL();
+    link.download = "Post-1";
+  }
+  convertInputToCanvasText(e) {
+    let input = document.getElementsByClassName("textbox");
+    let textValue = document.getElementsByClassName("textbox")[0].value;
+    drawText(this._ctx, textValue);
+    document.getElementsByClassName("post")[0].removeChild(input[0]);
+    console.log(input);
+  }
 
-  _loadImage(imageFile, targetSelectorClassName) {
+  _loadImage(imageFile, targetSelectorClassName, scaleFactor, position) {
+    if (!scaleFactor) {
+      scaleFactor = 1
+    }
+    if (!position) {
+      position = {
+        left: 0,
+        top: 0
+      }
+    }
     if (imageFile) {
       let img = document.createElement("img");
       img.className = "post";
@@ -55,13 +79,7 @@ class Post {
       let ctx = this._ctx
       img.onload = function() {
         window.URL.revokeObjectURL(img.src);
-//         targetSelector.appendChild(img)
-//         ctx.drawImage(img, 0,0,600,600, 0, 0, 600, 600);
-        let scaledImage = scaleIt(canvas,ctx,img, 0.5) 
- 
-//         canvas.width = scaledImage.width / 2;
-//         canvas.height = scaledImage.height / 2;
-//         drawImageProp(ctx, scaledImage)
+        scaleAndDraw(canvas, ctx, img, scaleFactor, position.left, position.top)
       }
     }
   }
