@@ -61,6 +61,3 @@ function drawText(ctx, textValue) {
   ctx.font = font;
   ctx.fillText(textValue, 230, 238);
 }
-function insertCanvasToFrame(e){
-  document.getElementById("frame-1").appendChild("myCanvas");
-}

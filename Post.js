@@ -11,10 +11,15 @@ class Post {
     this._templateImage = null;
     this._logo = null;
     this._text = '';
+    this._bgImageSelector = 'post-background';
+  }
+
+  get bgImageElement() {
+    return document.getElementsByClassName(this._bgImageSelector)[0]
   }
 
   set bgImage(imageFile) {
-    this._loadImage(imageFile, 'post-background')
+    this._loadImage(imageFile, this._bgImageSelector)
     this._bgImage = imageFile;
 
   }
@@ -25,6 +30,7 @@ class Post {
     this._loadImage(imageFile, 'post-theme')
     this._templateImage = imageFile;
 
+
   }
   get templateImage() {
     return this._templateImage
@@ -32,7 +38,7 @@ class Post {
   set logo(imageFile) {
     this._loadImage(imageFile, 'post-logo', 0.2, {
       top: 10,
-      left: 200
+      left: 200,
     })
     this._logo = imageFile;
 
@@ -48,17 +54,26 @@ class Post {
   get text() {
     return this._text
   }
-  savePost(e) {
-    let link = document.getElementsByClassName('downloadButton')[0];
-    link.href = canvas.toDataURL();
-    link.download = "Post-1";
-  }
-  convertInputToCanvasText(e) {
+  convertInputToCanvasText() {
     let input = document.getElementsByClassName("textbox");
     let textValue = document.getElementsByClassName("textbox")[0].value;
     drawText(this._ctx, textValue);
     document.getElementsByClassName("post")[0].removeChild(input[0]);
-    post.savePost(e);
+  }
+
+  convertImgToCanvas(imgElement) {
+    this._ctx.drawImage(this.bgImageElement, 0, 0);
+    //     drawImageProp(this._ctx, imgElement)
+    document.getElementsByClassName("post")[0].removeChild(img[0]);
+  }
+  convertAndDownloadPost(e) {
+    this.convertImgToCanvas(this.bgImageElement)
+    post.convertInputToCanvasText();
+    post.convertImgToCanvas(imgElement);
+
+    let link = document.getElementsByClassName('downloadButton')[0];
+    link.href = canvas.toDataURL();
+    link.download = "Post-1";
   }
 
   _loadImage(imageFile, targetSelectorClassName, scaleFactor, position) {

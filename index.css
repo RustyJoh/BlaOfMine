@@ -161,18 +161,27 @@ flex-direction: row;
     justify-content: space-around;
 }
 
-.navigation> .right-arrow{
+.navigation> #right-arrow{
     width: 15%;
 }
-.navigation > .frame-1{
+.navigation > #frame-1{
     width: 15%;
 }
-.navigation > .frame-2{
+.navigation > #frame-2{
      width: 15%;
 }
-.navigation> .frame-3{
+.navigation> #frame-3{
     width: 15%;
 }
-.navigation > .left-arrow{
+.navigation > #left-arrow{
     width: 15%;
+}
+.post-background{
+  z-index:1;
+}
+.post-theme{
+  z-index:2;
+}
+.post-logo{
+  z-index:3;
 }
