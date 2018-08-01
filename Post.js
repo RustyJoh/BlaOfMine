@@ -12,14 +12,23 @@ class Post {
     this._logo = null;
     this._text = '';
     this._bgImageSelector = 'post-background';
-  }
+    this._templateImageSelector = 'post-theme';
+    this._logoImageSelector = 'post-logo';
 
+  }
   get bgImageElement() {
     return document.getElementsByClassName(this._bgImageSelector)[0]
   }
+  get templateImageElement() {
+    return document.getElementsByClassName(this._templateImageSelector)[0]
+  }
+
+  get logoImageElement() {
+    return document.getElementsByClassName(this._logoImageSelector)[0]
+  }
 
   set bgImage(imageFile) {
-    this._loadImage(imageFile, this._bgImageSelector)
+    this._loadImage(imageFile, this.bgImageElement)
     this._bgImage = imageFile;
 
   }
@@ -27,7 +36,7 @@ class Post {
     return this._bgImage
   }
   set templateImage(imageFile) {
-    this._loadImage(imageFile, 'post-theme')
+    this._loadImage(imageFile, this.templateImageElement)
     this._templateImage = imageFile;
 
 
@@ -36,13 +45,12 @@ class Post {
     return this._templateImage
   }
   set logo(imageFile) {
-    this._loadImage(imageFile, 'post-logo', 0.2, {
-      top: 10,
-      left: 200,
-    })
+    this._loadImage(imageFile, this.logoImageElement) 
     this._logo = imageFile;
-
   }
+  
+                    
+  
   get logo() {
     return this._logo
   }
@@ -76,25 +84,14 @@ class Post {
     link.download = "Post-1";
   }
 
-  _loadImage(imageFile, targetSelectorClassName, scaleFactor, position) {
-    if (!scaleFactor) {
-      scaleFactor = 1
-    }
-    if (!position) {
-      position = {
-        left: 0,
-        top: 0
-      }
-    }
+  _loadImage(imageFile, parentDivElement) {
     if (imageFile) {
       let img = document.createElement("img");
       img.className = "post";
       img.src = window.URL.createObjectURL(imageFile);
-      let canvas = this._canvas
-      let ctx = this._ctx
       img.onload = function() {
         window.URL.revokeObjectURL(img.src);
-        scaleAndDraw(canvas, ctx, img, scaleFactor, position.left, position.top)
+        parentDivElement.appendChild(img);
       }
     }
   }
