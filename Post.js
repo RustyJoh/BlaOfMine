@@ -16,68 +16,89 @@ class Post {
     this._logoImageSelector = 'post-logo';
 
   }
-  get bgImageElement() {
+  
+  get bgDivElement() {
     return document.getElementsByClassName(this._bgImageSelector)[0]
   }
-  get templateImageElement() {
+  
+  get templateDivElement() {
     return document.getElementsByClassName(this._templateImageSelector)[0]
+  }
+  
+  get logoDivElement() {
+    return document.getElementsByClassName(this._logoImageSelector)[0]
+  }
+  
+  get bgImageElement() {
+    return document.getElementsByClassName(this._bgImageSelector)[0].children[0]
+  }
+  
+  get templateImageElement() {
+    return document.getElementsByClassName(this._templateImageSelector)[0].children[0]
   }
 
   get logoImageElement() {
-    return document.getElementsByClassName(this._logoImageSelector)[0]
+    return document.getElementsByClassName(this._logoImageSelector)[0].children[0]
   }
 
   set bgImage(imageFile) {
-    this._loadImage(imageFile, this.bgImageElement)
+    this._loadImage(imageFile, this.bgDivElement)
     this._bgImage = imageFile;
-
   }
+  
   get bgImage() {
     return this._bgImage
   }
+  
   set templateImage(imageFile) {
-    this._loadImage(imageFile, this.templateImageElement)
+    this._loadImage(imageFile, this.templateDivElement)
     this._templateImage = imageFile;
-
-
   }
+  
   get templateImage() {
     return this._templateImage
   }
+  
   set logo(imageFile) {
-    this._loadImage(imageFile, this.logoImageElement) 
+    this._loadImage(imageFile, this.logoDivElement)
     this._logo = imageFile;
   }
-  
-                    
-  
+
   get logo() {
     return this._logo
   }
+  
   set text(textInput) {
     this._text(textInput, 'post-text')
     this._text = textInput;
-
   }
+  
   get text() {
     return this._text
   }
+  
   convertInputToCanvasText() {
     let input = document.getElementsByClassName("textbox");
     let textValue = document.getElementsByClassName("textbox")[0].value;
     drawText(this._ctx, textValue);
     document.getElementsByClassName("post")[0].removeChild(input[0]);
   }
-
-  convertImgToCanvas(imgElement) {
-    this._ctx.drawImage(this.bgImageElement, 0, 0);
-    //     drawImageProp(this._ctx, imgElement)
-    document.getElementsByClassName("post")[0].removeChild(img[0]);
+ 
+  convertImgToCanvas(img) { 
+    scaleAndDraw(this._canvas, this._ctx, img, 1, 0, 0);
+    // drawImageProp(this._ctx, imgElements)
+    let removeImg = document.getElementsByClassName("post-background")[0]
+    removeImg.removeChild(removeImg.children[0])
   }
-  convertAndDownloadPost(e) {
-    this.convertImgToCanvas(this.bgImageElement)
-    post.convertInputToCanvasText();
-    post.convertImgToCanvas(imgElement);
+  
+  convertAndDownloadPost() {
+    const imgElements = [this.bgImageElement, this.templateImageElement, this.logoImageElement]
+    const imgElementFiltered = imgElements.filter(n => !!n);
+    imgElementFiltered.forEach((img, i) => {
+      this.convertImgToCanvas(img)
+    })
+
+    this.convertInputToCanvasText();
 
     let link = document.getElementsByClassName('downloadButton')[0];
     link.href = canvas.toDataURL();
